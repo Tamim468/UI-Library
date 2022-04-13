@@ -3,6 +3,10 @@
 
 -- Instances:
 
+if game.CoreGui:FindFirstChild("LIB") ~- nil then
+    game.CoreGui["LIB"]:Destroy()	
+end
+
 local LIB = Instance.new("ScreenGui")
 local UI = Instance.new("Frame")
 local Tabs = Instance.new("Frame")
