@@ -3,7 +3,7 @@
 
 -- Instances:
 
-if game.CoreGui:FindFirstChild("LIB") ~- nil then
+if game.CoreGui:FindFirstChild("LIB") ~= nil then
     game.CoreGui["LIB"]:Destroy()	
 end
 
