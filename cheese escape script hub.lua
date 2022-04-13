@@ -5,4 +5,5 @@ function lib:init(name)
        game.CoreGui["UI"]:Destroy()
     end
     print("sure")
+    print(name)
 end
