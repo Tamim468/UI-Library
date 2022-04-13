@@ -32,7 +32,7 @@ local TextLabel_8 = Instance.new("TextLabel")
 --Properties:
 
 LIB.Name = "LIB"
-LIB.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+LIB.Parent = game.CoreGui
 LIB.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 UI.Name = "UI"
