@@ -498,6 +498,58 @@ local function OKPSFQ_fake_script() -- Username.LocalScript
 end
 coroutine.wrap(OKPSFQ_fake_script)()
 
+coroutine.wrap(UPYZBEK_fake_script)()
+local function BWKIZI_fake_script() -- Info.Handler 
+	local script = Instance.new('LocalScript', Info)
+	script.Name = "Handler"
+	
+	local PingRemote2 = Instance.new("RemoteEvent",Info.Handler)
+	PingRemote2.Name = "GetPing"
+
+	local RunService = game:GetService("RunService")
+	local PingRemote = Info.Handler.GetPing
+	
+	local FPSCounter = Info.FPS
+	local PingCounter = Info.Ping
+	
+	local Colors = {
+		Good = Color3.fromRGB(0, 255, 0),
+		Normal = Color3.fromRGB(255, 255, 0),
+		Bad = Color3.fromRGB(255, 0, 0)
+	}
+	
+	RunService.RenderStepped:Connect(function(TimeBetween)
+		local FPS = math.floor(1 / TimeBetween)
+		
+		FPSCounter.Text = "FPS  : "..tostring(FPS)
+		
+		local stats = game:GetService("Stats")
+		
+	while task.wait(1) do
+		local ping = tonumber(string.split(stats:WaitForChild("Network"):WaitForChild("ServerStatsItem"):WaitForChild("Data Ping"):GetValueString(), " ")[1])
+		if ping == nil then continue end
+		PingCounter.Text = "Ping: "..math.floor(ping).."ms"
+	end
+	
+	    if FPS >= 50 then
+			FPSCounter.TextColor3 = Colors.Good
+			script.Parent.Problematic_FPS.Visible = false
+		elseif FPS >= 30 then
+			FPSCounter.TextColor3 = Colors.Normal
+			script.Parent.Problematic_FPS.Visible = false
+		elseif FPS >= 1 then
+			FPSCounter.TextColor3 = Colors.Bad
+			script.Parent.Problematic_FPS.Visible = true
+		end
+	end)
+end
+coroutine.wrap(BWKIZI_fake_script)()
+local function PKEQZ_fake_script() -- Info.PingHandler 
+	local script = Instance.new('Script', Info)
+
+	local PingRemote = script.Parent.Handler.GetPing
+end
+
     sectionContainer.ChildAdded:Connect(function(v)
         if v.ClassName == "Frame" then
             local Offset = 16
