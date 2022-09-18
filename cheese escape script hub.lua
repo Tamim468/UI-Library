@@ -456,9 +456,20 @@ function Library:Window(Info)
     dropdownText1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     dropdownText1.BackgroundTransparency = 1
     dropdownText1.Position = UDim2.new(0.0157, 0, 0, 2)
-    dropdownText1.Rotation = 360
     dropdownText1.Size = UDim2.new(0, 77, 0, 12)
     dropdownText1.Parent = dropdown
+    
+    dropdownFrame.MouseEnter:Connect(function()
+        if not State then
+            Tween(dropdownFrame, .125, {BackgroundColor3 = Color3.fromRGB(85, 69, 110)})
+        end
+    end)
+
+    dropdownFrame.MouseLeave:Connect(function()
+        if not State then
+            Tween(dropdownFrame, .125, {BackgroundColor3 = Color3.fromRGB(71, 53, 97)})
+        end
+    end)
 
     function insidedropdown:Toggle(bool)
         State = bool
@@ -467,10 +478,12 @@ function Library:Window(Info)
             dropdown.Size = UDim2.new(0, 191, 0, dropdown.Size.Y.Offset + DropdownY)
             dropdownFrame.Size = UDim2.new(0, 80, 0, dropdownFrame.Size.Y.Offset + DropdownY)
             dropdownIcon.Text = "+"
+            Tween(dropdownFrame, .125, {BackgroundColor3 = Color3.fromRGB(85, 69, 110)})
         else
             dropdown.Size = UDim2.new(0, 191, 0, dropdown.Size.Y.Offset - DropdownY)
             dropdownFrame.Size = UDim2.new(0, 80, 0, dropdownFrame.Size.Y.Offset - DropdownY)
             dropdownIcon.Text = "-"
+            Tween(dropdownFrame, .2, {BackgroundColor3 = Color3.fromRGB(71, 53, 97)})
         end
     end
 
@@ -604,14 +617,14 @@ end
 
     sliderOuter.MouseEnter:Connect(function()
         if not Pressing then
+            Tween(sliderOuter, .125, {BackgroundColor3 = Color3.fromRGB(85, 69, 110)})
             Tween(sliderInner, .1, {BackgroundColor3 = Color3.fromRGB(204, 102, 92)})
         end
     end)
 
     sliderOuter.MouseLeave:Connect(function()
-        if not Pressing then
-            Tween(sliderInner, .1, {BackgroundColor3 = Color3.fromRGB(201, 93, 84)})
-        end
+        Tween(sliderInner, .1, {BackgroundColor3 = Color3.fromRGB(201, 93, 84)})
+        Tween(sliderOuter, .125, {BackgroundColor3 = Color3.fromRGB(71, 53, 97)})
     end)
     
     local uIStroke1 = Instance.new("UIStroke")
@@ -655,11 +668,13 @@ end
     dragButton.MouseButton1Down:Connect(function()
         Pressing = true
         Tween(sliderInner, .1, {BackgroundColor3 = Color3.fromRGB(231, 108, 96)})
+        Tween(sliderOuter, .125, {BackgroundColor3 = Color3.fromRGB(85, 69, 110)})
     end)
 
     dragButton.MouseButton1Up:Connect(function()
         Pressing = false
         Tween(sliderInner, .1, {BackgroundColor3 = Color3.fromRGB(204, 102, 92)})
+        Tween(sliderOuter, .125, {BackgroundColor3 = Color3.fromRGB(71, 53, 97)})
     end)
     
     local sliderText = Instance.new("TextLabel")
@@ -709,6 +724,62 @@ end
                 end
             end)
         end)
+    end
+    
+    function Section:Button(Info)
+    Info.Text = Info.Text or "Button"
+    Info.Callback = Info.Callback or function() end
+    local button = Instance.new("Frame")
+    button.Name = "Button"
+    button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    button.BackgroundTransparency = 1
+    button.Size = UDim2.new(0, 191, 0, 15)
+    button.Parent = sectionContainer
+    
+    local buttonFrame = Instance.new("Frame", button)
+    buttonFrame.Name = "ButtonFrame"
+    buttonFrame.BackgroundColor3 = Color3.fromRGB(71, 53, 97)
+    buttonFrame.BorderSizePixel = 0
+    buttonFrame.Position = UDim2.new(0, 0, 0, 3)
+    buttonFrame.Size = UDim2.new(0, 80, 0, 11)
+    
+    local buttonUIStroke = Instance.new("UIStroke", buttonFrame)
+    buttonUIStroke.Color = Color3.fromRGB(0, 0, 0)
+    
+    local UIGradient = Instance.new("UIGradient", buttonFrame)
+    UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(154, 154, 154)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
+    UIGradient.Rotation = 270
+    
+    local buttonText = Instance.new("TextLabel", buttonFrame)
+    buttonText.Name = "ButtonText"
+    buttonText.Font = Enum.Font.SourceSans
+    buttonText.TextSize = 13
+    buttonText.TextStrokeTransparency = 0
+    buttonText.BackgroundTransparency = 1
+    buttonText.Text = Info.Text
+    buttonText.TextColor3 = Color3.fromRGB(255, 255, 255)
+    buttonText.Size = UDim2.new(1, 0, 0, 9)
+    
+    local buttonButton = Instance.new("TextButton", buttonFrame)
+    buttonButton.BackgroundTransparency = 1
+    buttonButton.Text = ""
+    buttonButton.Size = UDim2.new(1, 0, 1, 0)
+    
+    buttonFrame.MouseEnter:Connect(function()
+        Tween(buttonFrame, .125, {BackgroundColor3 = Color3.fromRGB(85, 69, 110)})
+    end)
+
+    buttonFrame.MouseLeave:Connect(function()
+        Tween(buttonFrame, .125, {BackgroundColor3 = Color3.fromRGB(71, 53, 97)})
+    end)
+    
+    local TextBounds = buttonText.TextBounds
+    
+    buttonFrame.Size = UDim2.new(0, TextBounds.X + 8, 0, 11)
+    
+    buttonButton.MouseButton1Click:Connect(function()
+        task.spawn(Info.Callback)
+    end)
     end
 
     function Section:Check(Info)
