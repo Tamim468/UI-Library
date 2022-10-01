@@ -382,6 +382,7 @@ function Library:Window(Info)
     dropdown.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     dropdown.BackgroundTransparency = 1
     dropdown.Size = UDim2.new(0, 191, 0, 15)
+    dropdown.ZIndex = 20
     dropdown.Parent = sectionContainer
 
     local dropdownFrame = Instance.new("Frame")
@@ -391,6 +392,7 @@ function Library:Window(Info)
     dropdownFrame.ClipsDescendants = true
     dropdownFrame.Position = UDim2.new(0, 0, 0, 3)
     dropdownFrame.Size = UDim2.new(0, 80, 0, 11)
+    dropdownFrame.ZIndex = 20
     dropdownFrame.Parent = dropdown
 
     local uIStroke = Instance.new("UIStroke")
@@ -418,6 +420,7 @@ function Library:Window(Info)
     dropdownIcon.BackgroundTransparency = 1
     dropdownIcon.Position = UDim2.new(0, 71, 0, 0)
     dropdownIcon.Rotation = 360
+    dropdownIcon.ZIndex = 21
     dropdownIcon.Size = UDim2.new(0, 10, 0, 10)
     dropdownIcon.Parent = dropdownFrame
 
@@ -428,6 +431,7 @@ function Library:Window(Info)
     textButton.TextColor3 = Color3.fromRGB(0, 0, 0)
     textButton.TextSize = 14
     textButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    textButton.ZIndex = 21
     textButton.BackgroundTransparency = 1
     textButton.Size = UDim2.new(1, 0, 0, 11)
     textButton.Parent = dropdownFrame
@@ -437,6 +441,7 @@ function Library:Window(Info)
     dropdownContainer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     dropdownContainer.BackgroundTransparency = 1
     dropdownContainer.Position = UDim2.new(0, 0, 0, 11)
+    dropdownContainer.ZIndex = 21
     dropdownContainer.Size = UDim2.new(0, 80, 0, 0)
     dropdownContainer.Parent = dropdownFrame
 
@@ -452,6 +457,7 @@ function Library:Window(Info)
     dropdownText1.TextColor3 = Color3.fromRGB(255, 255, 255)
     dropdownText1.TextSize = 13
     dropdownText1.TextStrokeTransparency = 0
+    dropdownText1.ZIndex = 21
     dropdownText1.TextXAlignment = Enum.TextXAlignment.Left
     dropdownText1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     dropdownText1.BackgroundTransparency = 1
@@ -495,6 +501,7 @@ function Library:Window(Info)
     dropdownElement.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     dropdownElement.BackgroundTransparency = 1
     dropdownElement.Size = UDim2.new(0, 80, 0, 12)
+    dropdownElement.ZIndex = 22
     dropdownElement.Parent = dropdownContainer
 
     dropdownElement.MouseEnter:Connect(function()
@@ -513,6 +520,7 @@ function Library:Window(Info)
     dropdownButton.TextSize = 14
     dropdownButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     dropdownButton.BackgroundTransparency = 1
+    dropdownButton.ZIndex = 22
     dropdownButton.Size = UDim2.new(1, 0, 0, 12)
     dropdownButton.Parent = dropdownElement
 
@@ -526,6 +534,7 @@ function Library:Window(Info)
     dropdownText.TextXAlignment = Enum.TextXAlignment.Left
     dropdownText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     dropdownText.BackgroundTransparency = 1
+    dropdownText.ZIndex = 22
     dropdownText.Position = UDim2.new(0.0157, 2, 0, 0)
     dropdownText.Rotation = 360
     dropdownText.Size = UDim2.new(0, 75, 0, 12)
