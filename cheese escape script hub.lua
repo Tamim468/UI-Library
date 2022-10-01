@@ -39,7 +39,7 @@ function Library:Window(Info)
     
     local interWebzTheme = Instance.new("ScreenGui")
     interWebzTheme.Name = "InterWebzTheme"
-    interWebzTheme.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    interWebzTheme.ZIndexBehavior = Enum.ZIndexBehavior.Global
     interWebzTheme.Parent = CoreGui
     
     UserInputService.InputBegan:Connect(function(Input, GameProcessed)
